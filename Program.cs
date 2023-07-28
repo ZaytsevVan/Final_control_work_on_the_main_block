@@ -18,12 +18,17 @@ string[] FillArray(int stringNumber)
 {
     string[] array = new string[stringNumber];
  
-    for(int i = 0; i < array.Length; i++)
+    for(int i = 0; i < stringNumber; i++)
     {
         Console.WriteLine("Введите элемент массива array[{0}] ", i);
         array[i] = Console.ReadLine();
     }
     return array;
+}
+
+void PrintArray(string[] array)
+{
+    Console.Write("[" + string.Join(", ", array) + "]");
 }
 
 string[] ChangingTheArray(string[] array)
@@ -48,11 +53,6 @@ string[] ChangingTheArray(string[] array)
         }    
     }
     return newArray;
-}
-
-void PrintArray(string[] array)
-{
-    Console.Write("[" + string.Join(", ", array) + "]");
 }
 
 void Main()
