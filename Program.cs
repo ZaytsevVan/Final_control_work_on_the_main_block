@@ -16,8 +16,7 @@ int ReadInt(string text)
 
 string[] FillArray(int stringNumber)
 {
-    string[] array; 
-    array = new string[stringNumber];
+    string[] array = new string[stringNumber];
  
     for(int i = 0; i < array.Length; i++)
     {
@@ -27,12 +26,46 @@ string[] FillArray(int stringNumber)
     return array;
 }
 
+string[] ChangingTheArray(string[] array)
+{
+    int count = 0;
+
+    for(int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length < 4)
+        count++;
+    }
+
+    string[] newArray = new string[count];
+    int index = 0;
+
+    for(int i = 0; i < array.Length; i++)
+    {
+        if(array[i].Length < 4)
+        {
+            newArray[index] = array[i];
+            index++;
+        }    
+    }
+    return newArray;
+}
+
 void PrintArray(string[] array)
 {
     Console.Write("[" + string.Join(", ", array) + "]");
 }
 
-int stringNumber = ReadInt("Введите количество элементов массива: ");
-string[] arrayOfStrings= FillArray(stringNumber);
-Console.WriteLine();
-PrintArray(arrayOfStrings);
+void Main()
+{
+    int stringNumber = ReadInt("Введите количество элементов массива: ");
+    string[] arrayOfStrings= FillArray(stringNumber);
+    Console.WriteLine();
+    Console.WriteLine("Заполненный вами массив выглядит так: ");
+    PrintArray(arrayOfStrings);
+    Console.WriteLine();
+    Console.WriteLine("Если в вашем массиве оставить только строки из трех символов то он будет выглядеть так: ");
+    string[] newArrayOfStrings = ChangingTheArray(arrayOfStrings);
+    PrintArray(newArrayOfStrings);
+}
+
+Main();
